@@ -35,11 +35,12 @@ import java.util.stream.Stream;
 @AllArgsConstructor
 class SkillBarWidgetGrouping {
     private Widget grayOut99;
-    private Widget barBackground;
-    private Widget barForeground;
-    private Widget goalBackground;
-    private Widget goalForeground;
-    private Widget[] progressBarSegments;
+    private Widget primaryBarBackground;
+    private Widget primaryBarForeground;
+    private Widget secondaryBarBackground;
+    private Widget secondaryBarForeground;
+    private Widget skillDividerBarContainer;
+    private Widget[] skillDividerBarSegments;
 
     boolean contains(Widget other) {
         return Arrays.asList(all()).contains(other);
@@ -48,12 +49,13 @@ class SkillBarWidgetGrouping {
     Widget[] all() {
         Widget[] bars = new Widget[]{
                 grayOut99,
-                barBackground,
-                barForeground,
-                goalBackground,
-                goalForeground,
+                primaryBarBackground,
+                primaryBarForeground,
+                secondaryBarBackground,
+                secondaryBarForeground,
+                skillDividerBarContainer,
         };
 
-        return Stream.concat(Arrays.stream(bars), Arrays.stream(progressBarSegments)).toArray(Widget[]::new);
+        return Stream.concat(Arrays.stream(bars), Arrays.stream(skillDividerBarSegments)).toArray(Widget[]::new);
     }
 }
